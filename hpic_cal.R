@@ -11,8 +11,9 @@
 ioncal <- function(df) {
   if (!is.data.frame (df))
     warning("Did not provide a usable data frame")
+  oas <- readline(prompt="name of calibration standard: ")
   # select operation: subset rows based on type "oas", and keep all columns
-  df_oas <- df[which(oa_dataset$Type == "oas"), ]
+  df_oas <- df[which(df$Type == oas), ]
   #view(df_oas)
 
   # extracting and saving names of analytes
@@ -37,7 +38,7 @@ ioncal <- function(df) {
   }
 
   # Creating matrix of unknown values that need calibrated
-  df_unknown <- oa_dataset[which(oa_dataset$Type == "Unknown"), ]
+  df_unknown <- oa_dataset[which(df$Type == "Unknown"), ]
   # make a matrix of all analytes
   X <- data.matrix(df_unknown[c(4:ncol(df_unknown))])
   # replace NA with 0
