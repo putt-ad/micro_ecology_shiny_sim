@@ -23,13 +23,22 @@ Inj.	Injection.Name	Type 	analyte1	analyte2	analyte3
 # you can leave other calibrations standards in as they will not be detected nor will they interfere with calibaration
 
 View(your_df)
-# check these results against the provided data "formatted_ion.csv"
+# check these results against the provided data "ion_test.csv"
 
 ##### read file as dataframe #####
 your_df <- read.csv ("name_of_your_ion_data.csv")
 head(your_df)
 View(your_df)
 
-##### perform calibration #####
+##### test calibration using ion_test.csv dataset #####
+ion_test <- read.csv("ion_test.csv")
+ioncal(ion_test)
+name of calibration standard: oas
+
+##### now use your data #####
 ioncal(your_df)
+
+#the function will prompt you for the name of your standard
+name of calibration standard:
+
 
